@@ -10,7 +10,8 @@ namespace BestCalc
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Калькулятор");
+            Console.ReadKey();
         }
     }
 }
