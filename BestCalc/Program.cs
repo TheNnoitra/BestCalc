@@ -18,10 +18,12 @@ namespace BestCalc
             bool Operaciya = Program.Proverka(oper);
             if (Operaciya == true)
             {
-                Console.Write("Введите числа (через пробел): ");
                 double x = 0;
                 double y = 0;
                 double res = 0;
+
+                Console.Write("Введите числа (через пробел): ");
+
                 string operXY = Console.ReadLine();
                 string[] array = operXY.Split(' ');//разделяет на массив чисел разделенных знаками
                 x = Convert.ToDouble(array[0]);
@@ -29,11 +31,11 @@ namespace BestCalc
                 Console.WriteLine($"Введеные числа: x = {x}, y = {y}");
 
                 Calc calc = new Calc();
-                
+
                 if (oper == "Sum")
                 {
-                    res = calc.Sum(x,y);
-                    Console.WriteLine($"Sum({x} + {y}) = {Math.Round(res,4)}");
+                    res = calc.Sum(x, y);
+                    Console.WriteLine($"Sum({x} + {y}) = {Math.Round(res, 4)}");
 
                 }
                 else if (oper == "Min")
@@ -44,7 +46,7 @@ namespace BestCalc
                 }
                 else if (oper == "Mul")
                 {
-                    res = calc.Mul(x,y);
+                    res = calc.Mul(x, y);
                     Console.WriteLine($"Mul({x} * {y}) = {Math.Round(res, 4)}");
 
                 }
@@ -54,7 +56,7 @@ namespace BestCalc
                     Console.WriteLine($"Div({x} / {y}) = {Math.Round(res, 4)}");
 
                 }
-                
+
             }
             else { Console.WriteLine("Такой операции не обнаружено"); }
             Console.ReadKey();
