@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 
 
@@ -12,9 +13,29 @@ namespace BestCalc
     {
         static void Main(string[] args)
         {
+
+            //получить сборку классов
+            //является ли он реализацией нашего интерфейса
+
+
+
+
+
+
+
+            var calc1 = new Calc();
+
+            var operations = calc1.GetOperNames();
+
             Console.WriteLine("Калькулятор");
 
             Console.Write("Выберите операцию (Sum, Min, Mul, Div): ");
+
+            foreach (var item in operations)
+            {
+                Console.WriteLine(item);
+            }
+
             string oper = Console.ReadLine();
             bool Operaciya = Program.Proverka(oper);
             if (Operaciya == true)
@@ -33,6 +54,10 @@ namespace BestCalc
 
                 Calc calc = new Calc();
 
+                res = calc.Exec(oper, new[] { x, y });
+
+                Console.WriteLine($" = {Math.Round(res, 4)}");
+                /*
                 if (oper == "Sum")
                 {
                     res = calc.Sum(x, y);
@@ -57,10 +82,13 @@ namespace BestCalc
                     Console.WriteLine($"Div({x} / {y}) = {Math.Round(res, 4)}");
 
                 }
+                */
 
             }
             else { Console.WriteLine("Такой операции не обнаружено"); }
-            Console.ReadKey();
+            
+                
+                Console.ReadKey();
         }
         public static bool Proverka(string oper)
         {
