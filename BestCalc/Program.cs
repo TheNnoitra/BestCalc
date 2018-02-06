@@ -16,28 +16,22 @@ namespace BestCalc
 
             //получить сборку классов
             //является ли он реализацией нашего интерфейса
-
-
-
-
-
-
-
             var calc1 = new Calc();
-
             var operations = calc1.GetOperNames();
 
             Console.WriteLine("Калькулятор");
 
-            Console.Write("Выберите операцию (Sum, Min, Mul, Div): ");
-
+            Console.Write("Доступные операции:  ");
             foreach (var item in operations)
             {
-                Console.WriteLine(item);
+                Console.Write(item+" ");
             }
+            Console.WriteLine();
+            Console.Write("Выберите операцию:  ");
 
             string oper = Console.ReadLine();
             bool Operaciya = Program.Proverka(oper);
+
             if (Operaciya == true)
             {
                 double x = 0;
@@ -45,7 +39,6 @@ namespace BestCalc
                 double res = 0;
 
                 Console.Write("Введите числа (через пробел): ");
-
                 string operXY = Console.ReadLine();
                 string[] array = operXY.Split(' ');//разделяет на массив чисел разделенных знаками
                 x = Convert.ToDouble(array[0]);
@@ -53,42 +46,12 @@ namespace BestCalc
                 Console.WriteLine($"Введеные числа: x = {x}, y = {y}");
 
                 Calc calc = new Calc();
-
                 res = calc.Exec(oper, new[] { x, y });
-
-                Console.WriteLine($" = {Math.Round(res, 4)}");
-                /*
-                if (oper == "Sum")
-                {
-                    res = calc.Sum(x, y);
-                    Console.WriteLine($"Sum({x} + {y}) = {Math.Round(res, 4)}");
-
-                }
-                else if (oper == "Min")
-                {
-                    res = calc.Min(x, y);
-                    Console.WriteLine($"Min({x} - {y}) = {Math.Round(res, 4)}");
-
-                }
-                else if (oper == "Mul")
-                {
-                    res = calc.Mul(x, y);
-                    Console.WriteLine($"Mul({x} * {y}) = {Math.Round(res, 4)}");
-
-                }
-                else if (oper == "Div")
-                {
-                    res = calc.Div(x, y);
-                    Console.WriteLine($"Div({x} / {y}) = {Math.Round(res, 4)}");
-
-                }
-                */
-
+                Console.WriteLine($"Результат операции = {Math.Round(res, 4)}");
             }
             else { Console.WriteLine("Такой операции не обнаружено"); }
-            
-                
-                Console.ReadKey();
+
+            Console.ReadKey();
         }
         public static bool Proverka(string oper)
         {
