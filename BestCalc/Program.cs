@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-
+using System.IO;
 
 namespace BestCalc
 {
@@ -17,9 +17,20 @@ namespace BestCalc
             var calc1 = new Calc();
             var operations = calc1.GetOperNames();
 
+            //поиск доступных DDL в папке 'path' 
+            //у которых встречается в названии 'Calc' и 'Core'
+            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\BestCalc\bin\Debug";
 
+            List<string> filespath = Directory.GetFiles(path, "*Calc*Core*.dll").ToList<string>();
+            Console.WriteLine("Доступные библиотеки: ");
+            foreach (var item in filespath)
+            {
+                //вывод в консоль список доступных библиотек
+                string files = Path.GetFileNameWithoutExtension(item);
+                Console.WriteLine(files + " ");
+            }
 
-
+            Console.WriteLine();
             Console.WriteLine("Калькулятор");
 
             Console.Write("Доступные операции:  ");
@@ -43,6 +54,7 @@ namespace BestCalc
 
                 Console.Write("Введите числа (через пробел): ");
                 string operXY = Console.ReadLine();
+
                 //разделяет на массив чисел разделенных знаками
                 string[] array = operXY.Split(' ');
                 x = Convert.ToDouble(array[0]);
