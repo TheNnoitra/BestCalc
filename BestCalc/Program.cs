@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Reflection;
+using System.IO;
 
 namespace BestCalc
 {
@@ -11,60 +12,67 @@ namespace BestCalc
     {
         static void Main(string[] args)
         {
+            //получить сборку классов
+            //является ли он реализацией нашего интерфейса
+            var calc1 = new Calc();
+            var operations = calc1.GetOperNames();
+
+            //поиск доступных DDL в папке 'path' 
+            //у которых встречается в названии 'Calc' и 'Core'
+            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\BestCalc\bin\Debug";
+
+            List<string> filespath = Directory.GetFiles(path, "*Calc*Core*.dll").ToList<string>();
+            Console.WriteLine("Доступные библиотеки: ");
+            foreach (var item in filespath)
+            {
+                //вывод в консоль список доступных библиотек
+                string files = Path.GetFileNameWithoutExtension(item);
+                Console.WriteLine(files + " ");
+            }
+
+            Console.WriteLine();
             Console.WriteLine("Калькулятор");
 
-            Console.Write("Выберите операцию (Sum, Min, Mul, Div): ");
+            Console.Write("Доступные операции:  ");
+            foreach (var item in operations)
+            {
+                //вывод в консоль список доступных операций
+                Console.Write(item+" ");    
+            }
+            Console.WriteLine();
+            Console.Write("Выберите операцию:  ");
+
             string oper = Console.ReadLine();
-            bool Operaciya = Program.Proverka(oper);
-            if (Operaciya == true)
+
+            //проверка введеной операции (есть ли такая в наличии)
+            bool opers = operations.Any(el => el.Contains(oper)); 
+            if (opers == true)
             {
                 double x = 0;
                 double y = 0;
                 double res = 0;
 
                 Console.Write("Введите числа (через пробел): ");
-
                 string operXY = Console.ReadLine();
-                string[] array = operXY.Split(' ');//разделяет на массив чисел разделенных знаками
+
+                //разделяет на массив чисел разделенных знаками
+                string[] array = operXY.Split(' ');
                 x = Convert.ToDouble(array[0]);
                 y = Convert.ToDouble(array[1]);
                 Console.WriteLine($"Введеные числа: x = {x}, y = {y}");
 
                 Calc calc = new Calc();
-
-                if (oper == "Sum")
-                {
-                    res = calc.Sum(x, y);
-                    Console.WriteLine($"Sum({x} + {y}) = {Math.Round(res, 4)}");
-
-                }
-                else if (oper == "Min")
-                {
-                    res = calc.Min(x, y);
-                    Console.WriteLine($"Min({x} - {y}) = {Math.Round(res, 4)}");
-
-                }
-                else if (oper == "Mul")
-                {
-                    res = calc.Mul(x, y);
-                    Console.WriteLine($"Mul({x} * {y}) = {Math.Round(res, 4)}");
-
-                }
-                else if (oper == "Div")
-                {
-                    res = calc.Div(x, y);
-                    Console.WriteLine($"Div({x} / {y}) = {Math.Round(res, 4)}");
-
-                }
-
+                res = calc.Exec(oper, new[] { x, y });
+                Console.WriteLine($"Результат операции = {Math.Round(res, 4)}");
             }
             else { Console.WriteLine("Такой операции не обнаружено"); }
+
             Console.ReadKey();
         }
         public static bool Proverka(string oper)
         {
             bool otvet = false;
-            if (oper == "Sum" || oper == "Min" || oper == "Mul" || oper == "Div" || oper == "Rand")
+            if (oper == "Sum" || oper == "Min" || oper == "Mul" || oper == "Div")
             {
                 otvet = true;
             }
