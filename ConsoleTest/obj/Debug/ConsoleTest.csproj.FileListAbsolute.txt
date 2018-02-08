@@ -1,0 +1,10 @@
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\obj\Debug\ConsoleTest.csprojResolveAssemblyReference.cache
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\ConsoleTest.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\ConsoleTest.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\BestCalc.exe
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\BestCalc.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\obj\Debug\ConsoleTest.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\obj\Debug\ConsoleTest.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\ItUniverCalcCore.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ConsoleTest\bin\Debug\ItUniverCalcCore.pdb

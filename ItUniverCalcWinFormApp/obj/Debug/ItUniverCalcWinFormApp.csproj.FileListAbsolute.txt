@@ -1,0 +1,11 @@
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcWinFormApp.exe.config
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcWinFormApp.exe
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcWinFormApp.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.csprojResolveAssemblyReference.cache
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.Form1.resources
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.Properties.Resources.resources
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.csproj.GenerateResource.Cache
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.exe
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcCore.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcCore.pdb

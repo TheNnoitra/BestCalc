@@ -1,0 +1,5 @@
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcCore\bin\Debug\ItUniverCalcCore.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcCore\bin\Debug\ItUniverCalcCore.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcCore\obj\Debug\ItUniverCalcCore.csprojResolveAssemblyReference.cache
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcCore\obj\Debug\ItUniverCalcCore.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcCore\obj\Debug\ItUniverCalcCore.pdb
