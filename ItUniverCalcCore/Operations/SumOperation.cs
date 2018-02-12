@@ -1,16 +1,21 @@
-﻿using System.Linq;
+﻿using ItUniverCalcCore.Interfaces;
+using System.Linq;
 
 namespace ItUniverCalcCore.Operations
 {
-    public class SumOperation : Interfaces.IOperation
+    public class SumOperation : SuperOperation
     {
-        public int argCount => 2;
+        public override string Owner => "IT Univer Co.";
 
-        public string Name => "Sum";
+        public override string Description => "Арифметическое действие, посредством которого из двух или нескольких чисел получают новое, содержащее столько единиц, сколько было во всех данных числах вместе.";
 
-        public double Exec(double[] args)
+        public override int argCount => 2;
+
+        public override string Name => "Sum";
+
+        public override double Exec(double[] args)
         {
-            return args.Aggregate((x,y)=>x+y);
+            return args.Sum();
         }
     }
 }

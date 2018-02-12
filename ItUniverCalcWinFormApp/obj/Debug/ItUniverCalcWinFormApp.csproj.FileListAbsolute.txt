@@ -9,3 +9,7 @@ C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCal
 C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\obj\Debug\ItUniverCalcWinFormApp.pdb
 C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcCore.dll
 C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcCore.pdb
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\App_Data\CalcDB.mdf
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\App_Data\CalcDB_log.ldf
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcDB.dll
+C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\ItUniverCalcWinFormApp\bin\Debug\ItUniverCalcDB.pdb

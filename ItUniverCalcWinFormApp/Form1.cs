@@ -1,33 +1,76 @@
 ﻿using BestCalc;
+using ItUniverCalcCore.Interfaces;
+using ItUniverCalcWinFormApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+//CONSTRAINT[FK_History_Operation] FOREIGN KEY([Operation]) REFERENCES[dbo].[Operation] ([Id])
 
 namespace ItUniverCalcWinFormApp
 {
     public partial class Form1 : Form
     {
         private Calc calc { get; set; }
+
+        private IOperation lastOperation { get; set; }
+
         public Form1()
         {
             InitializeComponent();
+            cbOperation.Items.Clear();
 
             #region Загрузка операций
 
             calc = new Calc();
             var operations = calc.GetOperNames();
-            //cbOperation.Items.AddRange(operations);
+            var own = calc.GetSettings();
+            var ow = own.Select(n => n.Name).ToArray();
+            foreach (var item in own.Select(o => o.Owner).ToArray())
+            {
+                if (item == "IT Univer Co.")
+                {
+                    cbOperation.ForeColor = System.Drawing.Color.Green;
+                    cbOperation.Items.AddRange(ow);
+                }
+                cbOperation.ForeColor = System.Drawing.Color.Green; ;
+                cbOperation.Items.AddRange(operations.Except(ow).ToArray());
+            }
 
-            cbOperation.DataSource = operations;
+            //cbOperation.DataSource = operations;
+
+            //var superOperations = superoperations.OfType<SuperOperation>();
+
+            //cbOperation.Items.AddRange(
+            //    own
+            //        .Select(s => s.Owner)
+            //        .ToArray()
+            //);
+
+            //cbOperation.Items.AddRange(
+            //    operations
+            //        .Except(own)
+            //        .Select(s => s.Name)
+            //        .ToArray()
+            //);
+
 
             //переводит фокус (каретку) на список операций.
             cbOperation.Select();
+
+            #endregion
+            //resCount();
+            
+            #region загрузка истории
+            lbHistory.DataSource = IHelper.GetAll();
             #endregion
         }
 
@@ -58,23 +101,30 @@ namespace ItUniverCalcWinFormApp
         /// <param name="e">E</param>
         private void btnCalc_Click(object sender, EventArgs e)
         {
-            //получаем операцию
             var oper = $"{cbOperation.SelectedItem}";
-
-            //получаем данные
+            // получить данные
             var args = tbInput.Text
                 .Trim()
                 .Split(' ')
                 .Select(str => Convert.ToDouble(str))
                 .ToArray();
 
-            //получаем результат
+            // вычислить результат
             var result = calc.Exec(oper, args);
+
+            // показать результат
             tbResult.Text = $"{result}";
+            //lbHistory.Items.Add(result);
+
+            // добавить в историю в БД
+            IHelper.AddToHistory(oper, args, result);
+
+            // добавить в историю на форму
+            //lbHistory.Items.Clear();
+            //lbHistory.DataSource = IHelper.GetAll();
 
             tbInput.Focus();
             tbInput.SelectAll();
-
         }
 
 
@@ -95,7 +145,7 @@ namespace ItUniverCalcWinFormApp
             //переводит фокус (каретку) на поле ввода чисел.
             tbInput.Select();
         }
-
+        
 
         /// <summary>
         /// Проверяет введены ли числа:
@@ -112,7 +162,9 @@ namespace ItUniverCalcWinFormApp
             //проверка на левые символы (пробел между числами не учитывается)
             //если обнаружено !число, то кнопка блокируется.
             bool verification = true;
+
             char[] array = oper.ToCharArray();
+
             foreach (var item in array)
             {
                 if (item != ' ')
@@ -142,5 +194,19 @@ namespace ItUniverCalcWinFormApp
             tbInput.ResetText();
             tbResult.ResetText();
         }
+
+        /// <summary>
+        /// Расчет по нажанию на Enter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                btnCalc_Click(sender, e);
+            }
+        }
+
     }
 }

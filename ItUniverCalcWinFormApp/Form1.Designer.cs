@@ -34,8 +34,9 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnLuck = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbInput = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbHistory = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,6 @@
             // btnCalc
             // 
             this.btnCalc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCalc.Enabled = false;
             this.btnCalc.Location = new System.Drawing.Point(367, 258);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(92, 39);
@@ -108,6 +108,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // tbInput
+            // 
+            this.tbInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbInput.BackColor = System.Drawing.SystemColors.Window;
+            this.tbInput.Location = new System.Drawing.Point(26, 26);
+            this.tbInput.Name = "tbInput";
+            this.tbInput.Size = new System.Drawing.Size(431, 20);
+            this.tbInput.TabIndex = 10;
+            this.tbInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbInput_KeyUp);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cbOperation);
@@ -119,24 +131,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // tbInput
+            // lbHistory
             // 
-            this.tbInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbInput.BackColor = System.Drawing.SystemColors.Window;
-            this.tbInput.Enabled = false;
-            this.tbInput.Location = new System.Drawing.Point(26, 26);
-            this.tbInput.Name = "tbInput";
-            this.tbInput.Size = new System.Drawing.Size(431, 20);
-            this.tbInput.TabIndex = 10;
-            this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
+            this.lbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbHistory.FormattingEnabled = true;
+            this.lbHistory.Location = new System.Drawing.Point(26, 188);
+            this.lbHistory.Name = "lbHistory";
+            this.lbHistory.Size = new System.Drawing.Size(216, 160);
+            this.lbHistory.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 375);
+            this.Controls.Add(this.lbHistory);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLuck);
@@ -148,6 +157,8 @@
             this.MinimumSize = new System.Drawing.Size(264, 373);
             this.Name = "Form1";
             this.Text = "Калькулятор";
+            this.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbInput_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -165,6 +176,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbInput;
+        private System.Windows.Forms.ListBox lbHistory;
     }
 }
 
