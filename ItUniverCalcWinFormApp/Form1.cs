@@ -65,9 +65,7 @@ namespace ItUniverCalcWinFormApp
 
             //переводит фокус (каретку) на список операций.
             cbOperation.Select();
-
             #endregion
-            //resCount();
             
             #region загрузка истории
             lbHistory.DataSource = IHelper.GetAll();
