@@ -1,0 +1,26 @@
+﻿@model IEnumerable<double>
+
+@{
+    var items = Model ?? new double[2];
+}
+<div id="ArgsContainer" style="display:inline-block">
+
+    @foreach (var item in items)
+    {
+        @Html.TextBox("[]", item)
+    }
+
+</div>
+
+<button onclick ="AddAgrs(); return false;" class="btn btn-info btn-sm">+</button>
+
+<script>
+    function AddAgrs()
+    {
+        var input = $("<input type = 'Text' name = 'Args[]' />")
+
+        $("#ArgsContainer").append(input)
+
+    }
+
+</script>
