@@ -26,49 +26,22 @@ namespace ItUniverCalcWinFormApp
         public Form1()
         {
             InitializeComponent();
-            cbOperation.Items.Clear();
-
             #region Загрузка операций
 
             calc = new Calc();
+
+            cbOperation.Items.Clear();
+
             var operations = calc.GetOperNames();
-            var own = calc.GetSettings();
-            var ow = own.Select(n => n.Name).ToArray();
-            foreach (var item in own.Select(o => o.Owner).ToArray())
-            {
-                if (item == "IT Univer Co.")
-                {
-                    cbOperation.ForeColor = System.Drawing.Color.Green;
-                    cbOperation.Items.AddRange(ow);
-                }
-                cbOperation.ForeColor = System.Drawing.Color.Green; ;
-                cbOperation.Items.AddRange(operations.Except(ow).ToArray());
-            }
+            cbOperation.DataSource = operations;
+            cbOperation.DisplayMember = "Name";
 
-            //cbOperation.DataSource = operations;
-
-            //var superOperations = superoperations.OfType<SuperOperation>();
-
-            //cbOperation.Items.AddRange(
-            //    own
-            //        .Select(s => s.Owner)
-            //        .ToArray()
-            //);
-
-            //cbOperation.Items.AddRange(
-            //    operations
-            //        .Except(own)
-            //        .Select(s => s.Name)
-            //        .ToArray()
-            //);
-
-
-            //переводит фокус (каретку) на список операций.
-            cbOperation.Select();
             #endregion
-            
-            #region загрузка истории
-            lbHistory.DataSource = IHelper.GetAll();
+
+            #region Загрузка истории
+
+            lbHistory.Items.AddRange(IHelper.GetAll());
+
             #endregion
         }
 

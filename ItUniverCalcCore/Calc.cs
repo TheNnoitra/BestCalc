@@ -12,6 +12,7 @@ namespace BestCalc
 {
     public class Calc
     {
+        /*
         private static  IList<IOperation> operations { get; set; }
 
         private static IList<ISuperOperation> superoperations { get; set; }
@@ -23,7 +24,9 @@ namespace BestCalc
 
             //поиск доступных DDL в папке 'path' 
             //у которых встречается в названии 'Calc' и 'Core'
-            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\BestCalc\bin\Debug";
+            //string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\BestCalc\bin\Debug";
+            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\libs";
+
             List<string> filespath = Directory.GetFiles(path, "*Calc*.dll").ToList<string>();
 
             foreach (var itemF in filespath)
@@ -67,7 +70,7 @@ namespace BestCalc
         {
             superoperations = new List<ISuperOperation>();
 
-            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\BestCalc\bin\Debug";
+            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\libs";
             List<string> filespath = Directory.GetFiles(path, "*Calc*.dll").ToList<string>();
 
             foreach (var itemF in filespath)
@@ -114,6 +117,91 @@ namespace BestCalc
 
             // возвращаем результат
             return res;
+        }
+    }
+    */
+        private IList<IOperation> operations { get; set; }
+        public Calc()
+        {
+            operations = new List<IOperation>();
+
+            string path = @"C:\Users\Asus_PC\Documents\Visual Studio 2015\Projects\ELMA\BestCalc\libs";
+
+            //// Загружаем наши операции
+            LoadOperation(Assembly.GetExecutingAssembly());
+
+            var files = Directory.GetFiles(path, "*.dll");
+
+            foreach (var file in files)
+            {
+                LoadOperation(Assembly.LoadFile(file));
+            }
+
+        }
+
+        private void LoadOperation(Assembly assembly)
+        {
+
+            var types = assembly.GetTypes();
+            var typeOperation = typeof(IOperation);
+
+            foreach (var item in types.Where(t => !t.IsAbstract && !t.IsInterface))
+            {
+                var interfaces = item.GetInterfaces();
+
+                var isOperation = interfaces.Any(it => it == typeOperation);
+
+                if (isOperation)
+                {
+                    // создаем эксземпляр объекта
+                    var obj = Activator.CreateInstance(item);
+                    // пытаемся превратить его в операцию
+                    var operation = obj as IOperation;
+                    // если удалось
+                    if (operation != null)
+                    {
+                        // добавляем в список операций
+                        operations.Add(operation);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Получить список имен операциий
+        /// </summary>
+        /// <returns></returns>
+        public string[] GetOperNames()
+        {
+            return operations.Select(it => it.Name).ToArray();
+        }
+
+        /// <summary>
+        /// Получить список имен операциий
+        /// </summary>
+        /// <returns></returns>
+        [Obsolete("Будет удалено в след.версии")]
+        public IOperation[] GetOpers()
+        {
+            return operations.ToArray();
+        }
+
+        public double Exec(string oper, double[] args)
+        {
+            // найти операцию в списке
+            var operation = operations
+                .FirstOrDefault(o => o.Name == oper);
+
+            // если не найдено - возвращает ошибку
+            if (operation == null)
+                return double.NaN;
+
+            // если нашли
+            // передаем ей аргументы и вычисляем результат
+            var result = operation.Exec(args);
+
+            // возвращаем результат
+            return result;
         }
     }
 }
